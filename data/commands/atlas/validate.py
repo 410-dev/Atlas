@@ -22,7 +22,7 @@ def offline() -> int:
     # Check if models exists
     modelSel = modelLib + os.sep + modelSel
     modelDef = modelLib + os.sep + modelDef
-    if not os.path.isfile(modelDef) and Registry.read("SOFTWARE.Helium.Program.Atlas.RequreDefaultModel") == "1":
+    if not os.path.isfile(modelDef) and Registry.read("SOFTWARE.Helium.Program.Atlas.RequireDefaultModel") == "1":
         print(Atlas.error(8))
         return 8
     elif not os.path.isfile(modelSel):
@@ -41,18 +41,24 @@ def offline() -> int:
     if Registry.read("SOFTWARE.Helium.Program.Atlas.CheckModelLoadedOnLaunch") != "0":
         modelLoaded: bool = States.getObj("Program.Atlas.ModelLoaded")
         model = States.getObj("Program.Atlas.Model")
-        if not modelLoaded:
+        if not modelLoaded or model == None:
             print(Atlas.error(2))
             return 2
-
+        
+        print("Verification complete.")
+        return 0
+        
     # Otherwise, load model.
     else:
         print("Loading model...")
         procmgr.launch("atlas-model", ["load", modelSel])
         print("Model loaded.")
+        return 0
     
 def online() -> int:
     OpenAIKey = Registry.read("SOFTWARE.Helium.Program.Atlas.OpenAIAPI")
     if OpenAIKey == None or len(OpenAIKey) < 10:
         print(Atlas.error(3))
         return 3
+    # TODO Add more verification steps
+    return 0
