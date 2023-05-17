@@ -53,8 +53,26 @@ class AtlasModel:
         modelLoc = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelLibrary") + os.sep + modelName
         
         verbose = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Verbose") == "1"
+        batch = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Batch")
+        seed = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Seed")
+        threads = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Threads")
+        tokens = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.MaxTokens")
+        lasttokens = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.LastTokens")
+        memoryLock = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.MemoryLock")
+        tokens = int(tokens)
+        lasttokens = int(lasttokens)
+        seed = int(seed)
+        batch = int(batch)
+        threads = int(threads)
+        memoryLock = memoryLock == "1"
         print(f"Verbose: {verbose}")
-        llm = Llama(model_path=modelLoc, verbose=verbose)        
+        print(f"Batch: {batch}")
+        print(f"Seed: {seed}")
+        print(f"Threads: {threads}")
+        print(f"Tokens: {tokens}")
+        print(f"Last Tokens: {lasttokens}")
+        print(f"Memory Lock: {memoryLock}")
+        llm = Llama(model_path=modelLoc, verbose=verbose, n_ctx=tokens, n_batch=batch, n_threads=threads, seed=seed, last_n_tokens_size=lasttokens, use_mlock=memoryLock)
         
         States.setObj("Program.Atlas.Model", llm)
         States.setObj("Program.Atlas.ModelLoaded", True)
