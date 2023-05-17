@@ -1,5 +1,7 @@
-SOFTWARE.Helium.Program.Atlas.OpenAIAPI=test1
-SOFTWARE.Helium.Program.Atlas.GoogleAPI=test
+SOFTWARE.Helium.Program.Atlas.OpenAIAPI=
+SOFTWARE.Helium.Program.Atlas.OpenAIModel=gpt-3.5-turbo
+SOFTWARE.Helium.Program.Atlas.GoogleAPI=
+SOFTWARE.Helium.Program.Atlas.GoogleAPICX=
 SOFTWARE.Helium.Program.Atlas.Name=Atlas
 SOFTWARE.Helium.Program.Atlas.AssistantRole=Assistant
 SOFTWARE.Helium.Program.Atlas.Preprompt=
