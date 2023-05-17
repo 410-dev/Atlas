@@ -1,5 +1,6 @@
 from kernel.states import States
 import kernel.registry as Registry
+import kernel.procmgr as procmgr
 
 class atlas():
     
@@ -8,8 +9,8 @@ class atlas():
     
     def main(self) -> int:
         if Registry.read("SOFTWARE.Helium.Program.Atlas.SetupDone") == "1":
-            States.setObj("Program.Atlas.Model", "This should be a model variable")
-            States.setObj("Program.Atlas.ModelLoaded", True)
+            modelName = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelSelected")
+            procmgr.launch("atlas-model", ["load", modelName])
         else:
             print("[Atlas Hook]: Atlas is not configured yet. Please run atlas-install.")
     

@@ -1,5 +1,6 @@
 import os
 import kernel.registry as Registry
+import kernel.procmgr as procmgr
 from kernel.states import States
 from data.commands.atlas.main import Atlas
 
@@ -46,7 +47,9 @@ def offline() -> int:
 
     # Otherwise, load model.
     else:
-        '''TODO'''
+        print("Loading model...")
+        procmgr.launch("atlas-model", ["load", modelSel])
+        print("Model loaded.")
     
 def online() -> int:
     OpenAIKey = Registry.read("SOFTWARE.Helium.Program.Atlas.OpenAIAPI")
