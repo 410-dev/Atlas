@@ -72,11 +72,15 @@ class AtlasModel:
         print(f"Tokens: {tokens}")
         print(f"Last Tokens: {lasttokens}")
         print(f"Memory Lock: {memoryLock}")
-        llm = Llama(model_path=modelLoc, verbose=verbose, n_ctx=tokens, n_batch=batch, n_threads=threads, seed=seed, last_n_tokens_size=lasttokens, use_mlock=memoryLock)
+        try:
+            llm = Llama(model_path=modelLoc, verbose=verbose, n_ctx=tokens, n_batch=batch, n_threads=threads, seed=seed, last_n_tokens_size=lasttokens, use_mlock=memoryLock)
+            States.setObj("Program.Atlas.Model", llm)
+            States.setObj("Program.Atlas.ModelLoaded", True)
+            print(f"Model loaded.")
+        except Exception as e:
+            print(e)
+            return 1
         
-        States.setObj("Program.Atlas.Model", llm)
-        States.setObj("Program.Atlas.ModelLoaded", True)
-        print(f"Model loaded.")
         return 0
         
     def set(self):
