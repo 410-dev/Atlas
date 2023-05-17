@@ -38,7 +38,7 @@ The registry contains settings and parameters for the Atlas. Below is an explana
 - Description: Specifies whether the context should be stored by the Atlas.
 - Possible Values: 0 (do not store context) or 1 (store context).
 
-## SOFTWARE.Helium.Program.Atlas.UseOfflineModel
+## SOFTWARE.Helium.Program.Atlas.Local.UseOfflineModel
 - Description: Specifies whether the Atlas should use an offline AI model.
 - Possible Values: 0 (do not use offline model) or 1 (use offline model).
 
@@ -58,7 +58,7 @@ The registry contains settings and parameters for the Atlas. Below is an explana
 - Description: Specifies the URL for downloading the default AI model.
 - Possible Values: Any valid URL.
 
-## SOFTWARE.Helium.Program.Atlas.RequreDefaultModel
+## SOFTWARE.Helium.Program.Atlas.RequireDefaultModel
 - Description: Specifies whether the default AI model is required by the Atlas.
 - Possible Values: 0 (default model not required) or 1 (default model required).
 
@@ -82,7 +82,7 @@ The registry contains settings and parameters for the Atlas. Below is an explana
 - Description: Specifies whether the Atlas can perform automatic updates.
 - Possible Values: 0 (auto-update not allowed) or 1 (auto-update allowed).
 
-## SOFTWARE.Helium.Program.Atlas.LoadModelOnSystemBoot
+## SOFTWARE.Helium.Program.Atlas.Local.LoadModelOnSystemBoot
 - Description: Specifies whether the AI model should be loaded on system boot.
 - Possible Values: 0 (do not load model on boot) or 1 (load model on boot).
 
