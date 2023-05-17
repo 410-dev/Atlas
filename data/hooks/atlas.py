@@ -9,8 +9,11 @@ class atlas():
     
     def main(self) -> int:
         if Registry.read("SOFTWARE.Helium.Program.Atlas.SetupDone") == "1":
-            modelName = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelSelected")
-            procmgr.launch("atlas-model", ["load", modelName])
+            if Registry.read("SOFTWARE.Helium.Program.Atlas.Local.LoadModelOnSystemBoot") == "1":
+                modelName = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelSelected")
+                procmgr.launch("atlas-model", ["load", modelName])
+            else:
+                print("Model is not loaded on system boot.")
         else:
             print("[Atlas Hook]: Atlas is not configured yet. Please run atlas-install.")
     
