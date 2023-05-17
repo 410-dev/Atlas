@@ -25,14 +25,23 @@ These libraries are automatically installed via pip when user runs `atlas-instal
 
 
 
-## Instruction
+## Installation Instruction
 
 1. Copy everything under `data` directory to the corresponding `data` directory of Helium Kernel.
-2. Startup Helium, and you should see the following line:
+2. Boot Helium, and run `atlas-install`. This will install dependencies and registries first.
+    1. The installation may fail first time. It is normal.
+3. Restart Helium, and you should see the following line:
     `[Atlas Hook]: Atlas is not configured yet. Please run atlas-install.`
-3. Run `atlas-install`.
-    1. This will automatically install python dependencies and registry keys.
-4. If there's any configuration to edit, use `regedit` command to update the program settings.
+    1. If you don't see that after successful installation, then you can proceed.
+4. Run `atlas-install`.
+5. If there's any configuration to edit, use `regedit` command to update the program settings.
     1. All of the configuration is under the following key: `SOFTWARE.Helium.Program.Atlas`
     2. If you've changed any configurations, it is recommended to restart Helium.
-5. Run `atlas` to run the program.
+6. Run `atlas-model load` to load the model to memory.
+7. Run `atlas` to run the program.
+
+
+## Running Instruction
+1. Boot Helium.
+    1. The hook will automatically load unless configuration is manually edited.
+2. Run `atlas` to run the program.
