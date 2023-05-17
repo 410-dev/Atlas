@@ -10,8 +10,8 @@ class Atlas:
         "Model is not loaded.",
         "OpenAI key is invalid.",
         "Registry broken: SOFTWARE.Helium.Program.Atlas.ModelLibrary",
-        "Registry broken: ",
-        "Registry broken: ",
+        "Registry broken: SOFTWARE.Helium.Program.Atlas.ModelSelected",
+        "Registry broken: SOFTWARE.Helium.Program.Atlas.DefaultModel",
         "Selected model does not exist, and default model fallback is disabled.",
         "Default model does not exist.",
         "Warning: Selected model does not exist. Using default model fallback."
@@ -50,7 +50,7 @@ class Atlas:
         else:
             import data.commands.atlas.openai as llm
         
-        return llm.interactiveMode(self.args)
+        llm.interactiveMode(self.args)
         
         
         
