@@ -7,12 +7,13 @@ from kernel.states import States
 def command(command):
     return
 
-def interactiveMode():
+def interactiveMode(args: list):
     llm = States.getObj("Program.Atlas.Model")
     
-    print("Running test stage.")
-    
-    prompt = input("atlas >>> ")
+    if len(args) > 0:
+        prompt = " ".join(args)
+    else:
+        prompt = input("atlas >>> ")
     
     while prompt != "" and prompt != "exit":
         prePrompt  = Registry.read("SOFTWARE.Helium.Program.Atlas.Preprompt")
@@ -36,7 +37,12 @@ def interactiveMode():
             print("This will conflict the code, so code will automatically switched to stream mode.")
             streamMode = True
             echo = False
-            
+        
+        if len(args) > 0 and not echo:
+            print("Warning! Non-interactive mode is active.")
+            print("Forcing echo mode.")
+            streamMode = False
+            echo = True
             
         if prompt.startswith(Registry.read("SOFTWARE.Helium.Program.Atlas.Local.CommandSymbol")):
             command(prompt)
@@ -62,11 +68,23 @@ def interactiveMode():
         )
         
         print("\n\nAI:")
-        for out in stream:
-            completionFragment = copy.deepcopy(out)
-            print(completionFragment["choices"][0]["text"], end="")
-        print("")
-        print("")
-        prompt = input("atlas >>> ")
+        returnValue = []
+        if streamMode:
+            for out in stream:
+                completionFragment = copy.deepcopy(out)
+                print(completionFragment["choices"][0]["text"], end="")
+                returnValue.append(completionFragment["choices"][0]["text"])
+        else:
+            print(stream["choices"][0]["text"])
+            returnValue.append(stream["choices"][0]["text"])
         
+        returnValue = "".join(returnValue)
+            
+        print("")
+        print("")
+        if len(args) > 0:
+            return returnValue
+        else:
+            prompt = input("atlas >>> ")
+    return 0        
         
