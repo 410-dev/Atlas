@@ -48,7 +48,7 @@ def interactiveMode(args: list):
             command(prompt)
             continue
             
-        prompt = rolePrompt.replace("%role%", role).replace("%name%", name) + prePrompt + prompt + postPrompt
+        prompt = prePrompt + rolePrompt.replace("%role%", role).replace("%name%", name) + prompt + postPrompt
         
         
         if Registry.read("SOFTWARE.Helium.Program.Atlas.Local.SoftVerbose") == "1":
@@ -67,7 +67,8 @@ def interactiveMode(args: list):
             echo=echo
         )
         
-        print("\n\nAI:")
+        print("\n\n")
+        print("AI:================")
         returnValue = []
         if streamMode:
             for out in stream:
@@ -79,7 +80,7 @@ def interactiveMode(args: list):
             returnValue.append(stream["choices"][0]["text"])
         
         returnValue = "".join(returnValue)
-            
+        print("========End========")
         print("")
         print("")
         if len(args) > 0:
