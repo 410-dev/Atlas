@@ -30,4 +30,6 @@ SOFTWARE.Helium.Program.Atlas.Local.Stop={"data":["Question:", "Q:", "###", "##"
 SOFTWARE.Helium.Program.Atlas.Local.Stream=1
 SOFTWARE.Helium.Program.Atlas.Local.Echo=0
 SOFTWARE.Helium.Program.Atlas.Local.Verbose=0
+SOFTWARE.Helium.Program.Atlas.Local.SoftVerbose=0
+SOFTWARE.Helium.Program.Atlas.Local.CommandSymbol=$
 SOFTWARE.Helium.Settings.Hooks.OthersEnabled=1
