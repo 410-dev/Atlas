@@ -40,7 +40,7 @@ class AtlasInstall:
         
         # Download offline model
         config = 0 if Registry.read("SOFTWARE.Helium.Program.Atlas.AllowModelDownload") == "0" else 1
-        config = 0 if Registry.read("SOFTWARE.Helium.Program.Atlas.UseOfflineModel") == "0" else config
+        config = 0 if Registry.read("SOFTWARE.Helium.Program.Atlas.Local.UseOfflineModel") == "0" else config
         config = 0 if len(Registry.read("SOFTWARE.Helium.Program.Atlas.ModelLibrary")) < 1 else config
         config = 0 if len(Registry.read("SOFTWARE.Helium.Program.Atlas.DefaultModel")) < 1 else config
         config = 0 if len(Registry.read("SOFTWARE.Helium.Program.Atlas.DefaultModelURL")) < 1 else config
