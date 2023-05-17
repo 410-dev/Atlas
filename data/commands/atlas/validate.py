@@ -45,14 +45,11 @@ def offline() -> int:
             print(Atlas.error(2))
             return 2
         
-        print("Verification complete.")
         return 0
         
     # Otherwise, load model.
     else:
-        print("Loading model...")
         procmgr.launch("atlas-model", ["load", modelSel])
-        print("Model loaded.")
         return 0
     
 def online() -> int:
