@@ -51,7 +51,11 @@ class AtlasModel:
         
         print(f"Loading model: {modelName}")
         modelLoc = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelLibrary") + os.sep + modelName
-        llm = Llama(model_path=modelLoc)
+        
+        verbose = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Verbose") == "1"
+        print(f"Verbose: {verbose}")
+        llm = Llama(model_path=modelLoc, verbose=verbose)        
+        
         States.setObj("Program.Atlas.Model", llm)
         States.setObj("Program.Atlas.ModelLoaded", True)
         print(f"Model loaded.")
