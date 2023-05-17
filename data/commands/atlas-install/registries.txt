@@ -1,6 +1,5 @@
 SOFTWARE.Helium.Program.Atlas.AllowAutoUpdate=1
 SOFTWARE.Helium.Program.Atlas.AllowDefaultModelFallback=1
-SOFTWARE.Helium.Program.Atlas.AllowKernelUpdate=1
 SOFTWARE.Helium.Program.Atlas.AllowMicrophoneAccess=0
 SOFTWARE.Helium.Program.Atlas.AllowModelDownload=1
 SOFTWARE.Helium.Program.Atlas.AllowProgramInternetAccess=1
