@@ -17,7 +17,7 @@ def interactiveMode(args: list):
     
     while prompt != "" and prompt != "exit":
         prePrompt  = Registry.read("SOFTWARE.Helium.Program.Atlas.Preprompt")
-        max_tokens = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.MaxTokens")
+        max_tokens = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.MaxTokensPerMessage")
         stop       = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Stop")
         streamMode = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Stream")
         echo       = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Echo")
@@ -61,7 +61,7 @@ def interactiveMode(args: list):
         
         stream = llm(
             prompt=prompt,
-            max_tokens=max_tokens,
+            max_tokens=128,
             stop=stop,
             stream=streamMode,
             echo=echo
