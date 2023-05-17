@@ -2,7 +2,6 @@ import os
 import kernel.registry as Registry
 import subprocess
 import sys
-from tqdm import tqdm
 import requests
 
 class AtlasInstall:
@@ -47,6 +46,7 @@ class AtlasInstall:
         config = 0 if "--no-model-download" in self.args else config
         
         if config == 1:
+            from tqdm import tqdm
             print(f"Downloading model...")
             url = Registry.read("SOFTWARE.Helium.Program.Atlas.DefaultModelURL")
             fpath = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelLibrary") + os.sep + Registry.read("SOFTWARE.Helium.Program.Atlas.DefaultModel")
