@@ -1,7 +1,9 @@
 import os
-import kernel.registry as Registry
-from tqdm import tqdm
 import requests
+import kernel.registry as Registry
+from kernel.states import States
+from tqdm import tqdm
+from llama_cpp import Llama
 from typing import List
 
 class AtlasModel:
@@ -31,10 +33,14 @@ class AtlasModel:
         return 1
             
     def getListOfModels(self) -> List[str]:
-        listOfModels: list = []
         libLoc = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelLibrary")
-        return []
-        # '''TODO'''
+        file_list = []
+        extensions = [Registry.read("SOFTWARE.Helium.Program.Atlas.ModelFileExtension")]
+        for root, dirs, files in os.walk(libLoc):
+            for file in files:
+                if any(file.endswith(ext) for ext in extensions):                    
+                    file_list.append(file)
+        return file_list
     
     def load(self):
         models = self.getListOfModels();
@@ -42,8 +48,13 @@ class AtlasModel:
         if modelName not in models:
             print(f"Error: No such model found - {modelName}")
             return 2
-        # '''TODO'''
         
+        print(f"Loading model: {modelName}")
+        modelLoc = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelLibrary") + os.sep + modelName
+        llm = Llama(model_path=modelLoc)
+        States.setObj("Program.Atlas.Model", llm)
+        States.setObj("Program.Atlas.ModelLoaded", True)
+        print(f"Model loaded.")
         return 0
         
     def set(self):
@@ -71,7 +82,7 @@ class AtlasModel:
             print(f"Error: No such model found - {modelName}")
             return 2
         
-        # '''TODO'''
+        os.remove(Registry.read("SOFTWARE.Helium.Program.Atlas.ModelLibrary") + os.sep + modelName)
         return 0
            
     def download(self):
