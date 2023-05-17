@@ -24,3 +24,4 @@ SOFTWARE.Helium.Program.Atlas.AllowMicrophoneAccess=0
 SOFTWARE.Helium.Program.Atlas.AllowProgramInternetAccess=1
 SOFTWARE.Helium.Program.Atlas.CheckModelLoadedOnLaunch=1
 SOFTWARE.Helium.Program.Atlas.GPUAcceleration=0
+SOFTWARE.Helium.Settings.Hooks.OthersEnabled=1
