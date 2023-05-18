@@ -23,7 +23,7 @@ def interactiveMode(args: list):
         echo       = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Echo")
         postPrompt = Registry.read("SOFTWARE.Helium.Program.Atlas.Postprompt")
         role       = Registry.read("SOFTWARE.Helium.Program.Atlas.AssistantRole")
-        rolePrompt = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.RoleDescriptionPrompt")
+        rolePrompt = Registry.read("SOFTWARE.Helium.Program.Atlas.RoleDescriptionPrompt")
         name       = Registry.read("SOFTWARE.Helium.Program.Atlas.Name")
         
         echo       = echo == "1"
@@ -47,10 +47,10 @@ def interactiveMode(args: list):
         if prompt.startswith(Registry.read("SOFTWARE.Helium.Program.Atlas.Local.CommandSymbol")):
             command(prompt)
             continue
-            
-        prompt = prePrompt + rolePrompt.replace("%role%", role).replace("%name%", name) + prompt + postPrompt
         
-        
+        promptFormat = Registry.read("SOFTWARE.Helium.Program.Atlas.PromptFormat")
+        prompt = promptFormat.replace("%preprompt%", prePrompt).replace("%postprompt%", postPrompt).replace("%roleprompt%", rolePrompt.replace("%role%", role).replace("%name%", name)).replace("%userprompt%", prompt)
+
         if Registry.read("SOFTWARE.Helium.Program.Atlas.Local.SoftVerbose") == "1":
             print("\nSettings: ")
             print(f"prompt: {prompt}")
