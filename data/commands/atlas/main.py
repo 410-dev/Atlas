@@ -50,7 +50,7 @@ class Atlas:
         else:
             import data.commands.atlas.openai as llm
         
-        llm.interactiveMode(self.args)
+        return llm.interactiveMode(self.args)
         
         
         

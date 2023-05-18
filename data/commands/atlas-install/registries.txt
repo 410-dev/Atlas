@@ -45,3 +45,4 @@ SOFTWARE.Helium.Program.Atlas.RequireDefaultModel=1
 SOFTWARE.Helium.Program.Atlas.RoleDescriptionPrompt=From now on, you should act as an %role% named %name%. This is the question from the user: 
 SOFTWARE.Helium.Program.Atlas.StoreContext=1
 SOFTWARE.Helium.Settings.Hooks.OthersEnabled=1
+SOFTWARE.Helium.Settings.RawReturnFlag=1
