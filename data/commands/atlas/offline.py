@@ -38,11 +38,11 @@ def interactiveMode(args: list):
             streamMode = True
             echo = False
         
-        if len(args) > 0 and not echo:
-            print("Warning! Non-interactive mode is active.")
-            print("Forcing echo mode.")
-            streamMode = False
-            echo = True
+        # if len(args) > 0 and not echo:
+        #     print("Warning! Non-interactive mode is active.")
+        #     print("Forcing echo mode.")
+        #     streamMode = False
+        #     echo = True
             
         if prompt.startswith(Registry.read("SOFTWARE.Helium.Program.Atlas.Local.CommandSymbol")):
             command(prompt)
