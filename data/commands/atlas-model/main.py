@@ -43,7 +43,7 @@ class AtlasModel:
         return file_list
     
     def load(self):
-        models = self.getListOfModels();
+        models = self.getListOfModels()
         modelName = self.args[1] if len(self.args) >= 2 else Registry.read("SOFTWARE.Helium.Program.Atlas.ModelSelected")
         if modelName not in models:
             print(f"Error: No such model found - {modelName}")
@@ -74,8 +74,8 @@ class AtlasModel:
         print(f"Memory Lock: {memoryLock}")
         try:
             llm = Llama(model_path=modelLoc, verbose=verbose, n_ctx=tokens, n_batch=batch, n_threads=threads, seed=seed, last_n_tokens_size=lasttokens, use_mlock=memoryLock)
-            States.setObj("Program.Atlas.Model", llm)
-            States.setObj("Program.Atlas.ModelLoaded", True)
+            States.setObj("Program.Atlas.Model", llm, persistent=True, permission="1112")
+            States.setObj("Program.Atlas.ModelLoaded", True, persistent=True, permission="1111")
             print(f"Model loaded.")
         except Exception as e:
             print(e)
@@ -84,7 +84,7 @@ class AtlasModel:
         return 0
         
     def set(self):
-        models = self.getListOfModels();
+        models = self.getListOfModels()
         if len(self.args) < 2:
             print(f"Error: Expected model name.")
             return 3
