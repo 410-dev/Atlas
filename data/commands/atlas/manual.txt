@@ -1,0 +1,5 @@
+Run Atlas
+
+Usage:
+    atlas           : Run Atlas in interactive mode
+    atlas <prompt>  : Run Atlas just once with given prompt (No interaction)

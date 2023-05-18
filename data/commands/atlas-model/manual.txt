@@ -1,0 +1,11 @@
+Configure Atlas Model
+
+Usage:
+    atlas-model download        : Download the default Llama model
+    atlas-model download <url>  : Download Llama model from given URL
+    atlas-model list            : List downloaded Llama models
+    atlas-model set <name>      : Configure selected model (Requires 'atlas-model load' to actually load)
+    atlas-model delete <name>   : Delete a downloaded model
+    atlas-model load            : Load selected model to memory
+    atlas-model load <name>     : Temporarily load specific Llama model
+    
