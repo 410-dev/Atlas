@@ -3,3 +3,4 @@ Install Atlas to Helium environment
 Usage:
     atlas-install                     : Install program and download default model
     atlas-install --no-model-download : Install, but skip model downloading process
+    atlas-install --regfix            : Fix missing registry keys (Useful if updated)

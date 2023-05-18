@@ -29,12 +29,13 @@ class AtlasInstall:
         regs = []
         with open("./data/commands/atlas-install/registries.txt", 'r') as f:
             regs = f.readlines()
+
         for line in regs:
             name = line.split("=")[0]
             value = line.split("=")[1].strip() if not line.endswith("=") else ""
-        
-            Registry.write(name, value)
-            print(f"Updated registry: {name} -> {value}")
+
+            if Registry.write(name, value, overwrite=("--regfix" not in self.args)):
+                print(f"Updated registry: {name} -> {value}")
         print(f"Finished installing registry.")
         
         # Download offline model
