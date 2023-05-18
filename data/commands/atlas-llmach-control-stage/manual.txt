@@ -1,0 +1,32 @@
+Atlas Low Level Machine Control Stage
+
+This command will allow Atlas to control the host machine.
+
+Usage:
+    atlas-llmach-control-stage <script type> <confirmation> <script>
+
+script type:
+    -a: Apple Script (macOS only)
+        This requires the host machine to be macOS.
+
+    -as: BSD Shell Script (macOS only)
+        This requires the host machine to be macOS.
+
+    -s: Shell Script (Linux only)
+        This requires the host machine to be a linux distribution.
+
+    -ps: PowerShell (Windows only)
+        This requires the host machine to be Windows. Windows 10 or higher recommended.
+
+    -p: Python 3
+        This requires python3 and pip installed environment.
+
+confirmation:
+    --require-user-agreement
+        User must agree to the generated script.
+
+    --user-declared-that-user-trusts-ai-to-generate-proper-script-and-will-agree-whatever-it-generates
+        User don't need to agree to the generated script. (No interaction)
+
+script:
+    <Actual script goes here>
