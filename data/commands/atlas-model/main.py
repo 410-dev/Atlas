@@ -1,7 +1,7 @@
 import os
 import requests
 import kernel.registry as Registry
-from kernel.states import States
+from kernel.ipcmemory import IPCMemory
 from tqdm import tqdm
 from llama_cpp import Llama
 from typing import List
@@ -74,8 +74,8 @@ class AtlasModel:
         print(f"Memory Lock: {memoryLock}")
         try:
             llm = Llama(model_path=modelLoc, verbose=verbose, n_ctx=tokens, n_batch=batch, n_threads=threads, seed=seed, last_n_tokens_size=lasttokens, use_mlock=memoryLock)
-            States.setObj("Program.Atlas.Model", llm, persistent=True, permission="1112")
-            States.setObj("Program.Atlas.ModelLoaded", True, persistent=True, permission="1111")
+            IPCMemory.setObj("Program.Atlas.Model", llm, persistent=True, permission="1112")
+            IPCMemory.setObj("Program.Atlas.ModelLoaded", True, persistent=True, permission="1111")
             print(f"Model loaded.")
         except Exception as e:
             print(e)

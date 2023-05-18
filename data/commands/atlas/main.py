@@ -1,6 +1,6 @@
 import importlib
 import kernel.registry as Registry
-from kernel.states import States
+from kernel.ipcmemory import IPCMemory
 import json
 
 class Atlas:

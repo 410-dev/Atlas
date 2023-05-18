@@ -1,7 +1,7 @@
 import os
 import kernel.registry as Registry
 import kernel.procmgr as procmgr
-from kernel.states import States
+from kernel.ipcmemory import IPCMemory
 from data.commands.atlas.main import Atlas
 
 def offline() -> int:
@@ -39,8 +39,8 @@ def offline() -> int:
     
     # If expected to load model, check if it is on State memory.
     if Registry.read("SOFTWARE.Helium.Program.Atlas.CheckModelLoadedOnLaunch") != "0":
-        modelLoaded: bool = States.getObj("Program.Atlas.ModelLoaded")
-        model = States.getObj("Program.Atlas.Model")
+        modelLoaded: bool = IPCMemory.getObj("Program.Atlas.ModelLoaded")
+        model = IPCMemory.getObj("Program.Atlas.Model")
         if not modelLoaded or model == None:
             print(Atlas.error(2))
             return 2

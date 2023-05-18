@@ -1,4 +1,4 @@
-from kernel.states import States
+from kernel.ipcmemory import IPCMemory
 import kernel.registry as Registry
 import kernel.procmgr as procmgr
 
@@ -8,6 +8,7 @@ def main(args) -> int:
         if Registry.read("SOFTWARE.Helium.Program.Atlas.Local.LoadModelOnSystemBoot") == "1":
             modelName = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelSelected")
             procmgr.launch("atlas-model", ["load", modelName])
+            print("Model loaded on IPCMemory.")
         else:
             print("Model is not loaded on system boot.")
     else:

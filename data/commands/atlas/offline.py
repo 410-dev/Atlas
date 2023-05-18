@@ -2,13 +2,13 @@ import copy
 import kernel.registry as Registry
 import json
 
-from kernel.states import States
+from kernel.ipcmemory import IPCMemory
 
 def command(command):
     return
 
 def interactiveMode(args: list):
-    llm = States.getObj("Program.Atlas.Model")
+    llm = IPCMemory.getObj("Program.Atlas.Model")
     
     if len(args) > 0:
         prompt = " ".join(args)
