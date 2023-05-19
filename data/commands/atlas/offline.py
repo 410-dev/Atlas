@@ -7,7 +7,7 @@ from kernel.ipcmemory import IPCMemory
 def command(command):
     return
 
-def interactiveMode(args: list):
+def main(args: list):
     llm = IPCMemory.getObj("Program.Atlas.Model")
     
     if len(args) > 0:

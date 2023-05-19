@@ -1,5 +1,6 @@
 import importlib
 import kernel.registry as Registry
+import kernel.procmgr as procmgr
 from kernel.ipcmemory import IPCMemory
 import json
 
@@ -46,11 +47,9 @@ class Atlas:
             return exitCode
 
         if offlineMode == "1":
-            import data.commands.atlas.offline as llm
+            return procmgr.execScript("data/commands/atlas/offline.py", self.args, returnRaw=True)
         else:
-            import data.commands.atlas.openai as llm
-        
-        return llm.interactiveMode(self.args)
+            return procmgr.execScript("data/commands/atlas/openai.py", self.args, returnRaw=True)
         
         
         
