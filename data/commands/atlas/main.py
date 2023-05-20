@@ -35,12 +35,11 @@ class Atlas:
         # Check running mode
         # If use offline model, go to offline().
         # If use online api, go to online().
-        import data.commands.atlas.validate as Validator
         offlineMode = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.UseOfflineModel")
         if offlineMode == "1":
-            exitCode = Validator.offline()
+            exitCode = procmgr.execScript("data/commands/atlas/validate.py", [], functionName="offline")
         else:
-            exitCode = Validator.online()
+            exitCode = procmgr.execScript("data/commands/atlas/validate.py", [], functionName="online")
         
         # If validation failed, return exit code.
         if exitCode != 0 and not None:
