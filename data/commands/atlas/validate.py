@@ -4,7 +4,7 @@ import kernel.procmgr as procmgr
 from kernel.ipcmemory import IPCMemory
 from data.commands.atlas.main import Atlas
 
-def offline() -> int:
+def offline(args) -> int:
     # Check if model path is not empty
     modelLib: str = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelLibrary")
     modelSel: str = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelSelected")
@@ -52,7 +52,7 @@ def offline() -> int:
         procmgr.launch("atlas-model", ["load", modelSel])
         return 0
     
-def online() -> int:
+def online(args) -> int:
     OpenAIKey = Registry.read("SOFTWARE.Helium.Program.Atlas.OpenAIAPI")
     if OpenAIKey == None or len(OpenAIKey) < 10:
         print(Atlas.error(3))
