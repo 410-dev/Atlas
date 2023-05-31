@@ -38,7 +38,7 @@ def offline(args) -> int:
         
     
     # If expected to load model, check if it is on State memory.
-    if Registry.read("SOFTWARE.Helium.Program.Atlas.CheckModelLoadedOnLaunch") != "0":
+    if Registry.read("SOFTWARE.Helium.Program.Atlas.CheckModelLoadedOnLaunch") != "0" and Registry.read("SOFTWARE.Helium.Program.Atlas.Local.NoModelOnIPC") != "1":
         modelLoaded: bool = IPCMemory.getObj("Program.Atlas.ModelLoaded")
         model = IPCMemory.getObj("Program.Atlas.Model")
         if not modelLoaded or model == None:
@@ -48,7 +48,7 @@ def offline(args) -> int:
         return 0
         
     # Otherwise, load model.
-    else:
+    elif Registry.read("SOFTWARE.Helium.Program.Atlas.Local.NoModelOnIPC") == "0":
         procmgr.launch("atlas-model", ["load", modelSel])
         return 0
     

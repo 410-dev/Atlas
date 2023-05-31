@@ -39,6 +39,7 @@ SOFTWARE.Helium.Program.Atlas.Local.LoadModelOnSystemBoot=1
 SOFTWARE.Helium.Program.Atlas.Local.MaxTokens=4096
 SOFTWARE.Helium.Program.Atlas.Local.MaxTokensPerMessage=1024
 SOFTWARE.Helium.Program.Atlas.Local.MemoryLock=0
+SOFTWARE.Helium.Program.Atlas.Local.NoModelOnIPC=0
 SOFTWARE.Helium.Program.Atlas.Local.Seed=0
 SOFTWARE.Helium.Program.Atlas.Local.SoftVerbose=0
 SOFTWARE.Helium.Program.Atlas.Local.Stop={"data":["Question:", "Q:", "###"]}

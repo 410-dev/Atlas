@@ -43,6 +43,10 @@ class AtlasModel:
         return file_list
     
     def load(self):
+        if Registry.read("SOFTWARE.Helium.Program.Atlas.Local.NoModelOnIPC") == "1":
+            print("Error: Unable to load model on IPC memory due to system policy.")
+            return 1
+
         models = self.getListOfModels()
         modelName = self.args[1] if len(self.args) >= 2 else Registry.read("SOFTWARE.Helium.Program.Atlas.ModelSelected")
         if modelName not in models:
@@ -80,8 +84,7 @@ class AtlasModel:
         except Exception as e:
             print(e)
             return 1
-        
-        return 0
+    
         
     def set(self):
         models = self.getListOfModels()
