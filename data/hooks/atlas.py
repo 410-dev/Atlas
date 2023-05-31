@@ -7,8 +7,8 @@ def main(args) -> int:
     if Registry.read("SOFTWARE.Helium.Program.Atlas.SetupDone") == "1":
         if Registry.read("SOFTWARE.Helium.Program.Atlas.Local.LoadModelOnSystemBoot") == "1":
             modelName = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelSelected")
-            procmgr.launch("atlas-model", ["load", modelName])
-            print("Model loaded on IPCMemory.")
+            if procmgr.launch("atlas-model", ["load", modelName]) == Registry.read("SOFTWARE.Helium.Values.Proc.CommandExitSuccess"):
+                print("Model loaded on IPCMemory.")
         else:
             print("Model is not loaded on system boot.")
     else:
