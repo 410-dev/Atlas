@@ -1,6 +1,8 @@
 import copy
 import kernel.registry as Registry
 import json
+import os
+from llama_cpp import Llama
 
 from kernel.ipcmemory import IPCMemory
 
@@ -8,7 +10,25 @@ def command(command):
     return
 
 def main(args: list):
-    llm = IPCMemory.getObj("Program.Atlas.Model")
+
+    if Registry.read("SOFTWARE.Helium.Program.Atlas.Local.NoModelOnIPC") == "1":
+        modelLoc = Registry.read("SOFTWARE.Helium.Program.Atlas.ModelLibrary") + os.sep + Registry.read("SOFTWARE.Helium.Program.Atlas.ModelSelected")
+        verbose = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Verbose") == "1"
+        batch = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Batch")
+        seed = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Seed")
+        threads = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.Threads")
+        tokens = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.MaxTokens")
+        lasttokens = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.LastTokens")
+        memoryLock = Registry.read("SOFTWARE.Helium.Program.Atlas.Local.MemoryLock")
+        tokens = int(tokens)
+        lasttokens = int(lasttokens)
+        seed = int(seed)
+        batch = int(batch)
+        threads = int(threads)
+        memoryLock = memoryLock == "1"
+        llm = Llama(model_path=modelLoc, verbose=verbose, n_ctx=tokens, n_batch=batch, n_threads=threads, seed=seed, last_n_tokens_size=lasttokens, use_mlock=memoryLock)
+    else: 
+        llm = IPCMemory.getObj("Program.Atlas.Model")
     
     if len(args) > 0:
         prompt = " ".join(args)
