@@ -73,14 +73,15 @@ def main(args: list):
         if streamMode:
             for out in stream:
                 completionFragment = copy.deepcopy(out)
-                print(completionFragment["choices"][0]["text"], end="")
+                print(completionFragment["choices"][0]["text"], end="", flush=True)
                 returnValue.append(completionFragment["choices"][0]["text"])
         else:
             print(stream["choices"][0]["text"])
             returnValue.append(stream["choices"][0]["text"])
         
         returnValue = "".join(returnValue)
-        print("========End========")
+        ending = "" if returnValue.endswith("\n") else "\n"
+        print(f"{ending}========End========")
         print("")
         print("")
         if len(args) > 0:
