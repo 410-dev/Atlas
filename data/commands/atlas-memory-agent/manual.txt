@@ -1,0 +1,36 @@
+Atlas Memory Agent
+
+This command will allow Atlas to keep its memory.
+
+Usage:
+    atlas-memory-agent <conversation|assistant> <append|forget|read> <data>
+
+Flags:
+
+    [First argument]
+    conversation: Memory used in conversation mode.
+    assistant: Memory used in assistant mode.
+
+    [Second argument]
+    append: Add a memory object to memory file. Requires data of: string formatted memory object
+    -> data:
+        string:  A memory element. It should contain:
+            id (int)
+            time (long)
+            input (string)
+            output (string)
+            persistent (bool)
+
+    forget: Remove certain memory element. Requires one of the following type of data: integer, string, None.
+    -> data:
+        integer: Targets ID. Used when removing one element.
+        string:  Targets range of ID. Used when removing series of elements.
+                 If string is "last", it will remove the last element.
+        None:    Targets memory itself. Used when clearing entire memory.
+
+    read: Read memory file. Requires one of the following type of data: integer, string, None.
+    -> data:
+        integer: Targets ID. Used when reading one element.
+        string:  Targets range of ID. Used when reading series of elements.
+                 If string is "last", it will read the last element.
+        None:    Targets memory itself. Used when reading entire memory.
