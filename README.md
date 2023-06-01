@@ -1,6 +1,6 @@
 # Project Atlas
 
-An AI assistant running on [Helium Kernel](https://github.com/410-dev/Helium-core). Model powered by:`stable-vicuna-13B.q4` ([Link](https://huggingface.co/TheBloke/stable-vicuna-13B-GGML/resolve/main/stable-vicuna-13B.ggml.q4_0.bin))
+An AI assistant running on [Helium Kernel](https://github.com/410-dev/helium-kernel). Model powered by:`stable-vicuna-13B.q4` ([Link](https://huggingface.co/TheBloke/stable-vicuna-13B-GGML/resolve/main/stable-vicuna-13B.ggml.q4_0.bin))
 
 
 
